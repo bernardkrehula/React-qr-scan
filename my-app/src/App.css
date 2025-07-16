@@ -6,6 +6,38 @@ html {
    padding: 0;
    box-sizing: border-box;
 }
+body {
+  background-color: rgb(16, 16, 136);
+}
 .main {
-  
+  width: 500px;
+  margin: 150px auto;
+}
+.generate-div {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+  padding: 10px;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+.qr-code-content {
+  display: flex;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+.qr-code-scanner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: red;
+  align-items: center;
+  margin: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+}
+.qr-code-scanner svg{
+  color: white;
+  height: 150px;
+  width: 150px;
 }

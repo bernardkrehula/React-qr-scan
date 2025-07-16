@@ -1,9 +1,10 @@
+import './Btn.css'
 
-const singleButton = ({onClick, vartiation, child}) => {
+const SingleButton = ({onClick, vartiation, children}) => {
 
     return(
-        <button className={`btn ${vartiation}`} onClick={onClick}>{child}</button>
+        <button className={`btn ${vartiation}`} onClick={onClick}>{children}</button>
     )
 }
 
-export default singleButton
+export default SingleButton;
