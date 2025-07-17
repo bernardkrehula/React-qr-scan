@@ -1,0 +1,8 @@
+.countdown-timer-container {
+    position: absolute;
+    font-size: 5rem;
+    left: 50%;
+    top: 46%;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

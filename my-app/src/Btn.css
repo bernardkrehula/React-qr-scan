@@ -19,3 +19,7 @@
     height:fit-content;
     margin-right: 10px;
 }
+.color {
+    background-color: gray;
+    border: 3px solid gray;
+}
