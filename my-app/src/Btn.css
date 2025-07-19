@@ -9,17 +9,7 @@
     font-weight: 700;
     cursor: pointer;
 }
-
-.generate {
-    margin-left: auto;
-}
-.download {
-    margin-left: auto;
-    margin-top: 10px;
-    height:fit-content;
-    margin-right: 10px;
-}
-.color {
+.btn:disabled {
     background-color: gray;
     border: 3px solid gray;
 }

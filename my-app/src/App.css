@@ -22,6 +22,15 @@ body {
   border: 3px solid white;
   border-radius: 10px;
 }
+.generate-div button {
+  margin-left: auto;
+}
+.qr-code-content button {
+  margin-left: auto;
+  margin-top: 10px;
+  height: fit-content;
+  margin-right: 10px; 
+}
 .qr-code-content {
   display: flex;
   border: 3px solid white;
@@ -41,13 +50,27 @@ body {
   flex-direction: column;
   height: 210px;
   background-color: red;
-  align-items: center;
+  align-items: center; 
   margin: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
+}
+.qr-code-scanner:disabled {
+  background-color: green;
+}
+.qr-code-scanner button {
+  margin: auto !important;
 }
 .qr-code-scanner svg{
   color: white;
   height: 150px;
   width: 150px;
+}
+.countdown-timer {
+  position: absolute;
+  font-size: 5rem;
+  left: 50%;
+  top: 46%;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
