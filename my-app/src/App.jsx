@@ -4,7 +4,7 @@ import SingleButton from './Btn'
 import Spinner from './LoadingSpinner'
 
 function App() {
-
+  const [ pageLoader, setPageLoader ] = useState(true);
   const [ generated, setGenerated ] = useState(false);
   const [ loading, setLoading ] = useState(false)
   const [ time, setTime ] = useState(0);
@@ -25,6 +25,15 @@ function App() {
     setTime(5);
   }
   useEffect(() => {
+    if(pageLoader){
+      const loader = setTimeout(() => {
+        setPageLoader(prev => !prev)
+      },1000)
+      return () => clearTimeout(loader)
+    }
+  })
+
+  useEffect(() => {
     if(time <= 0) {
       resetIsGenerated();
       return;
@@ -44,7 +53,7 @@ function App() {
   //Pojednostaviti jsx (ne treba toliko ternary operatora)
   return (
     <>
-      <div className='main'> 
+      {pageLoader ? <Spinner variation='large'/> : <div className='main'> 
         <div className='generate-div'>
           <SingleButton onClick={async() => {
               await handleGenerateClick()
@@ -66,7 +75,7 @@ function App() {
           <SingleButton disabled={!generated}>Download</SingleButton>
           </>}
           </div>
-      </div>
+      </div>}
     </>
   )
 }

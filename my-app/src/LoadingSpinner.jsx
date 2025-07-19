@@ -1,8 +1,8 @@
 import './LoadingSpinner.css'
-const Spinner = () => {
+const Spinner = ({variation}) => {
 
     return(
-        <img src="./Spinner@1x-1.0s-200px-200px.gif" alt="Loading..." />
+        <img className={variation} src="./Spinner@1x-1.0s-200px-200px.gif" alt="Loading..." />
     )
 }
 
