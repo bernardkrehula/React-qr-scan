@@ -4,19 +4,15 @@ import SingleButton from './Btn'
 import Spinner from './LoadingSpinner'
 
 function App() {
-  const [ pageLoader, setPageLoader ] = useState(true);
   const [ generated, setGenerated ] = useState(false);
   const [ loading, setLoading ] = useState(false)
-  const [ time, setTime ] = useState(0);
+  const [ time, setTime ] = useState(5);
 
   const handleGenerateClick = async() => {
     
     if(!generated && !loading){
-      
-      setLoading(true);
+
       await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      setGenerated(true)
       setLoading(false)
     } 
   }
@@ -24,26 +20,28 @@ function App() {
   const timming = () => {
     setTime(5);
   }
-  useEffect(() => {
-    if(pageLoader){
-      const loader = setTimeout(() => {
-        setPageLoader(prev => !prev)
-      },1000)
-      return () => clearTimeout(loader)
-    }
-  })
-
+  
   useEffect(() => {
     if(time <= 0) {
       resetIsGenerated();
       return;
     }
+     if(time >= 5) setLoading(true)
+     const loadingTimer = setTimeout(() => {
+      setLoading(false)
+      setGenerated(true)  
+    },2000)
+    return () => { clearTimeout(loadingTimer) }
+  },[time])
 
-    const timer = setTimeout(() => {
+  useEffect(() => {
+    if(!loading && time > 0){
+      const timer = setTimeout(() => {
         setTime(prev => prev  - 1);
       }, 1000)
       return () => clearTimeout(timer)
-  },[time])
+    }
+  }, [loading, time])
 
   const resetIsGenerated = () => {
     setGenerated(prev => !prev);
@@ -53,7 +51,7 @@ function App() {
   //Pojednostaviti jsx (ne treba toliko ternary operatora)
   return (
     <>
-      {pageLoader ? <Spinner variation='large'/> : <div className='main'> 
+      <div className='main'> 
         <div className='generate-div'>
           <SingleButton onClick={async() => {
               await handleGenerateClick()
@@ -75,7 +73,7 @@ function App() {
           <SingleButton disabled={!generated}>Download</SingleButton>
           </>}
           </div>
-      </div>}
+      </div>
     </>
   )
 }
