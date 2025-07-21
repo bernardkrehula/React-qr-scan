@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import SingleButton from './Btn'
 import Spinner from './LoadingSpinner'
@@ -7,6 +7,7 @@ function App() {
   const [ generated, setGenerated ] = useState(false);
   const [ loading, setLoading ] = useState(false)
   const [ time, setTime ] = useState(5);
+  const refTimer = useRef(null);
   //startTimer funckija, pozvati u useEffect, ocistiti na klik i pokrenuti novi timmer
   const startTimer = () => {
       const timeout = setInterval(() => {
