@@ -7,39 +7,31 @@ function App() {
   const [ generated, setGenerated ] = useState(false);
   const [ loading, setLoading ] = useState(false)
   const [ time, setTime ] = useState(5);
-  const refTimer = useRef(null);
+  const refInterval = useRef(null);
   //startTimer funckija, pozvati u useEffect, ocistiti na klik i pokrenuti novi timmer
   const startTimer = () => {
-      const timeout = setInterval(() => {
+    if(refInterval.current !== null) return;
+
+      setTime(5)
+      setGenerated(prev => !prev)
+      refInterval.current = setInterval(() => {
         setTime(prev => {
-          if(prev > 0) {
-            console.log(time)
+          if(prev > 0){
             return prev - 1
           }
           else {
-            clearInterval(timeout)
-            return 0
+            clearInterval(refInterval.current)
+            refInterval.current = null;
+            setGenerated(false)
+            return prev;
           }
         });
       }, 1000)
   }
   
-  /* useEffect(() => {
-    if(time <= 0) {
-      resetIsGenerated();
-      return;
-    }
-     if(time >= 5) setLoading(true)
-     const loadingTimer = setTimeout(() => {
-      setLoading(false)
-      setGenerated(true)  
-    },2000)
-    return () => { clearTimeout(loadingTimer) }
-  },[time])
- */
   useEffect(() => {
     startTimer()
-  }, [time]) 
+  }, []) 
 
   const resetIsGenerated = () => {
     setGenerated(prev => !prev);
